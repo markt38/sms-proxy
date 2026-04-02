@@ -1,13 +1,13 @@
 {
 "name": "sms-proxy",
-“version”: “1.0.0”,
-“description”: “AAISP SMS proxy for Groundwire”,
-“type”: “module”,
-“main”: “server.js”,
-“scripts”: {
-“start”: “node server.js”
+"version": "1.0.0",
+"description": "AAISP SMS proxy for Groundwire",
+"type": "module",
+"main": "server.js",
+"scripts": {
+"start": "node server.js"
 },
-“dependencies”: {
-“express”: “^4.18.2”
+"dependencies": {
+"express": "^4.18.2"
 }
 }
