@@ -8,8 +8,22 @@ app.use(express.json())
 let messages = []
 
 app.all("/inbound", (req, res) => {
-  const from = req.body.from || req.query.from
-  const text = req.body.text || req.query.text
+  console.log("RAW BODY:", req.body)
+  console.log("RAW QUERY:", req.query)
+
+  const from =
+    req.body.from ||
+    req.body.originator ||
+    req.query.from ||
+    req.query.originator
+
+  const text =
+    req.body.text ||
+    req.body.message ||
+    req.body.ud ||
+    req.query.text ||
+    req.query.message ||
+    req.query.ud
 
   if (from && text) {
     let cleanFrom = from
@@ -25,7 +39,9 @@ app.all("/inbound", (req, res) => {
       delivered: false
     })
 
-    console.log("Received SMS:", cleanFrom, text)
+    console.log("Stored SMS:", cleanFrom, text)
+  } else {
+    console.log("Missing fields:", { from, text })
   }
 
   res.send("OK")
